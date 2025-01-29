@@ -1,0 +1,42 @@
+<script lang="ts">
+    import { onMount } from "svelte";
+    import Table from "../components/Table.svelte";
+    import Pagination from "../components/Pagination.svelte";
+    import { electricityData, loading } from "../stores/dataStore";
+    import { fetchElectricityData } from "../lib/api";
+    import type { ElectricityData } from "../lib/types";
+
+    let page: number = 1;
+    let totalPages: number = 1;
+
+    async function loadData() {
+        try {
+            loading.set(true);
+            const data: ElectricityData[] = await fetchElectricityData(page);
+            electricityData.set(data);
+
+            // Example: If API returns total pages, update this value
+            totalPages = Math.ceil(100 / 10); // Replace with real total pages from API
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            loading.set(false);
+        }
+    }
+
+    function changePage(newPage: number) {
+        if (newPage >= 1 && newPage <= totalPages) {
+            page = newPage;
+            loadData();
+        }
+    }
+
+    onMount(loadData);
+</script>
+
+{#if $loading}
+    <p>Loading...</p>
+{:else}
+    <Table data={$electricityData} />
+    <Pagination {page} {totalPages} onPageChange={changePage} />
+{/if}
