@@ -14,9 +14,7 @@
             loading.set(true);
             const data: ElectricityData[] = await fetchElectricityData(page);
             electricityData.set(data);
-
-            // Example: If API returns total pages, update this value
-            totalPages = Math.ceil(100 / 10); // Replace with real total pages from API
+            totalPages = Math.ceil(100 / 10); // Replace with real total pages
         } catch (error) {
             console.error("Error fetching data:", error);
         } finally {
