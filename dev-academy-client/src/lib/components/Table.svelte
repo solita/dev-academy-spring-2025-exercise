@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { ElectricityData } from "../lib/types";
+    import type { ElectricityData } from "../types";
 
     export let data: ElectricityData[] = [];
 </script>

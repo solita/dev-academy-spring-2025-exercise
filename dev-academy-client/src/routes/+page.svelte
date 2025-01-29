@@ -1,8 +1,8 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import Table from "../components/Table.svelte";
-    import Pagination from "../components/Pagination.svelte";
-    import { electricityData, loading } from "../stores/dataStore";
+    import Table from "../lib/components/Table.svelte";
+    import Pagination from "../lib/components/Pagination.svelte";
+    import { electricityData, loading } from "../lib/stores/dataStore";
     import { fetchElectricityData } from "../lib/api";
     import type { ElectricityData } from "../lib/types";
 
