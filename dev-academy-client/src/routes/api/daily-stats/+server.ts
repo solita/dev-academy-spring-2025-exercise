@@ -23,9 +23,7 @@ export const GET: RequestHandler = async ({ url }) => {
             SELECT \
                 productionamount \
             FROM ElectricityData \
-            ORDER BY date DESC \
-            LIMIT $1 OFFSET $2",
-        [limit, offset]);
+            ORDER BY date DESC");
 
         // Get the total number of records to calculate total pages
         const countResult = await pool.query('SELECT COUNT(*) FROM ElectricityData');
@@ -34,8 +32,8 @@ export const GET: RequestHandler = async ({ url }) => {
 
         // Send the data as JSON
         return new Response(JSON.stringify(result.rows), { status: 200 });
-        } catch (error) {
+    } catch (error) {
         console.error('Error fetching data:', error);
         return new Response('Error fetching data', { status: 500 });
-        }
+    }
   };
