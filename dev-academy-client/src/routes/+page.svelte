@@ -32,9 +32,26 @@
     onMount(loadData);
 </script>
 
+<style>
+    .container {
+        background-color: var(--color-white);
+        padding: var(--spacing-default);
+        border-radius: var(--border-radius-default);
+        color: var(--color-abyss-blue);
+        margin: 1rem;
+    }
+
+    .loading {
+        font-size: var(--font-size-default);
+        color: var(--color-turquoise);
+    }
+</style>
+
 {#if $loading}
-    <p>Loading...</p>
+    <p class="loading">Loading...</p>
 {:else}
-    <Table data={$electricityData} />
-    <Pagination {page} {totalPages} onPageChange={changePage} />
+    <div class="container">
+        <Table data={$electricityData} />
+        <Pagination {page} {totalPages} onPageChange={changePage} />
+    </div>
 {/if}

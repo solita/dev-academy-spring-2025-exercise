@@ -1,7 +1,7 @@
 export interface ElectricityData {
-    date: string;
-    total_consumption: number;
-    total_production: number;
-    avg_price: number;
-    longest_negative_period: number;
+    day: string;               // Date of the measurement
+    total_consumption: number | null; // Total consumption for the day
+    total_production: number | null;  // Total production for the day
+    avg_hourly_price: number | null;  // Average hourly price for the day
+    longest_negative_price_hrs: number | null;  // Longest consecutive negative price (hrs)
 }

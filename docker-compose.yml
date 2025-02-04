@@ -9,6 +9,7 @@ services:
       POSTGRES_USER: academy
       POSTGRES_PASSWORD: academy
       POSTGRES_DB: electricity
+      POSTGRES_PORT: 5432
     build:
       context: .
       dockerfile: Dockerfile
